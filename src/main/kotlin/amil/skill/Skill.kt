@@ -38,15 +38,13 @@ class Skill : JavaPlugin(), Listener {
             // spawn particle
             Action.LEFT_CLICK_AIR -> {
                 player.health = min(player.health + 10, 20.0) // <- 스파게티 방쉭
+                for (i in 1 .. 20)
                 player.spawnParticle(
                     Particle.HEART,
-                    loc.x + (player.eyeLocation.direction.x * 5),
-                    loc.y,
-                    loc.z + (player.eyeLocation.direction.z * 5),
-                    10,
-                    0.5,
-                    0.5,
-                    0.5
+                    loc.x + (player.eyeLocation.direction.x * i),
+                    loc.y + (player.eyeLocation.direction.y * i),
+                    loc.z + (player.eyeLocation.direction.z * i),
+                    1
                 )
             }
 
