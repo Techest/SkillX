@@ -4,13 +4,24 @@ import amil.skill.base.IWeapon
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.Sound
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import kotlin.math.min
 
 object TestSkill : IWeapon {
 
     override val item = Material.STICK
+
+    @EventHandler
+    fun fallCancel(event: EntityDamageEvent) {
+        if (event.entity !is Player) return
+        if ((event.entity as Player).player?.inventory?.itemInMainHand?.type != Material.STICK) return
+        if (event.cause == EntityDamageEvent.DamageCause.FALL) {
+            event.isCancelled = true
+        }
+    }
 
     @EventHandler
     override fun action(event: PlayerInteractEvent) {
