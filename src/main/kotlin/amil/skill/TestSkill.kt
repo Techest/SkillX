@@ -18,8 +18,12 @@ object TestSkill : IWeapon {
     fun fallCancel(event: EntityDamageEvent) {
         if (event.entity !is Player) return
         if ((event.entity as Player).player?.inventory?.itemInMainHand?.type != Material.STICK) return
+
+        val player = (event.entity as Player).player ?: return
+
         if (event.cause == EntityDamageEvent.DamageCause.FALL) {
             event.isCancelled = true
+            player.spawnParticle(Particle.BUBBLE_POP, player.location, 1000)
         }
     }
 
