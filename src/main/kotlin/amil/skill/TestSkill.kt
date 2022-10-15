@@ -46,14 +46,13 @@ object TestSkill : IWeapon {
 
         // 허공 좌클릭 스킬 ( 검기 날리기 )
 
-        for (i in 1..5)
-            player.spawnParticle(
-                Particle.SONIC_BOOM,
-                loc.x + (player.eyeLocation.direction.x * i),
-                loc.y + (player.eyeLocation.direction.y * i),
-                loc.z + (player.eyeLocation.direction.z * i),
-                1
-            )
+        for (i in 1..5) player.spawnParticle(
+            Particle.SONIC_BOOM,
+            loc.x + (player.eyeLocation.direction.x * i),
+            loc.y + (player.eyeLocation.direction.y * i),
+            loc.z + (player.eyeLocation.direction.z * i),
+            1
+        )
 
         player.velocity = player.velocity.add(player.location.direction.multiply(-2))
         return
@@ -66,7 +65,10 @@ object TestSkill : IWeapon {
     override fun onLeftClickAir(event: PlayerInteractEvent) {
         val player = event.player
         val loc = player.location
-        player.health = min(player.health + 10, 20.0) // <- 스파게티 방쉭
+
+        player.health = min(player.health + 10, 20.0)
+        player.playSound(player.location, Sound.ENTITY_WARDEN_SONIC_BOOM, 1.0f, 10.0f)
+
         for (i in 1..20) {
             player.spawnParticle(
                 Particle.SONIC_BOOM,
@@ -76,39 +78,16 @@ object TestSkill : IWeapon {
                 1
             )
 
-            val amLoc = Location(
+            val damageLoc = Location(
                 player.world,
                 loc.x + (player.eyeLocation.direction.x * i),
                 loc.y + (player.eyeLocation.direction.y * i),
                 loc.z + (player.eyeLocation.direction.z * i)
             )
 
-            spawnedArmorStand.add(player.world.spawnEntity(amLoc, EntityType.ARMOR_STAND))
-        }
-
-        spawnedArmorStand.forEach { entity ->
-            val armorStand = (entity as LivingEntity)
-            armorStand.isInvisible = true
-            armorStand.setGravity(false)
-
-            // Damage
-            entity.world.getNearbyEntities(entity.location, 1.0, 1.0, 1.0)
-                .forEach { target ->
-                    if (target is LivingEntity) {
-                        target.damage(5.0)
-                        entity.remove()
-                    }
-
+            player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
+                    if (target is LivingEntity) target.damage(5.0)
                 }
-        }
-
-        player.playSound(player.location, Sound.ENTITY_WARDEN_SONIC_BOOM, 1.0f, 10.0f)
-    }
-
-    @EventHandler
-    fun godArmorStand(event: EntityDamageEvent) {
-        if(event.entity is ArmorStand) {
-            spawnedArmorStand.forEach { entity -> if(event.entity == entity) event.isCancelled = true }
         }
     }
 
