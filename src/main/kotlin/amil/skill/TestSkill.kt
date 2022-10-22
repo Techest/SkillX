@@ -40,11 +40,10 @@ object TestSkill : IWeapon {
         super.action(event)
     }
 
+    // 쉬좌 스킬
     override fun onShiftLeftClick(event: PlayerInteractEvent) {
         val player = event.player
         val loc = player.location
-
-        // 허공 좌클릭 스킬 ( 검기 날리기 )
 
         for (i in 1..5) player.spawnParticle(
             Particle.SONIC_BOOM,
@@ -62,6 +61,7 @@ object TestSkill : IWeapon {
         event.clickedBlock?.type = Material.BIRCH_LOG
     }
 
+    // 허공 좌클릭 스킬 ( 검기 날리기 )
     override fun onLeftClickAir(event: PlayerInteractEvent) {
         val player = event.player
         val loc = player.location
