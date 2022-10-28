@@ -18,60 +18,25 @@ import kotlin.math.min
 
 object TestSkill : IWeapon {
 
-    override val item = Material.STICK
+    override val item = Material.IRON_SWORD
 
     private var spawnedArmorStand = ArrayList<Entity>()
-
-    @EventHandler
-    fun fallCancel(event: EntityDamageEvent) {
-        if (event.entity !is Player) return
-        if ((event.entity as Player).player?.inventory?.itemInMainHand?.type != Material.STICK) return
-
-        val player = (event.entity as Player).player ?: return
-
-        if (event.cause == EntityDamageEvent.DamageCause.FALL) {
-            event.isCancelled = true
-            player.spawnParticle(Particle.BUBBLE_POP, player.location, 1000)
-        }
-    }
 
     @EventHandler
     override fun action(event: PlayerInteractEvent) {
         super.action(event)
     }
 
-    // 쉬좌 스킬
-    override fun onShiftLeftClick(event: PlayerInteractEvent) {
+    // 좌클릭 스킬
+    override fun onLeftClick(event: PlayerInteractEvent) {
         val player = event.player
         val loc = player.location
 
-        for (i in 1..5) player.spawnParticle(
-            Particle.SONIC_BOOM,
-            loc.x + (player.eyeLocation.direction.x * i),
-            loc.y + (player.eyeLocation.direction.y * i),
-            loc.z + (player.eyeLocation.direction.z * i),
-            1
-        )
+        player.playSound(player.location, Sound.ENTITY_ENDER_DRAGON_AMBIENT, 1.0f, 1.0f)
 
-        player.velocity = player.velocity.add(player.location.direction.multiply(-2))
-        return
-    }
-
-    override fun onLeftClickBlock(event: PlayerInteractEvent) {
-        event.clickedBlock?.type = Material.BIRCH_LOG
-    }
-
-    // 허공 좌클릭 스킬 ( 검기 날리기 )
-    override fun onLeftClickAir(event: PlayerInteractEvent) {
-        val player = event.player
-        val loc = player.location
-
-        player.health = min(player.health + 10, 20.0)
-        player.playSound(player.location, Sound.ENTITY_WARDEN_SONIC_BOOM, 1.0f, 10.0f)
-
-        for (i in 1..20) {
+        for (i in 1..5) {
             player.spawnParticle(
-                Particle.SONIC_BOOM,
+                Particle.DRAGON_BREATH,
                 loc.x + (player.eyeLocation.direction.x * i),
                 loc.y + (player.eyeLocation.direction.y * i),
                 loc.z + (player.eyeLocation.direction.z * i),
@@ -91,10 +56,77 @@ object TestSkill : IWeapon {
         }
     }
 
-    override fun onRightClickAir(event: PlayerInteractEvent) {
+    // 우클릭 스킬
+    override fun onRightClick(event: PlayerInteractEvent) {
         val player = event.player
+        val loc = player.location
+        player.spawnParticle(Particle.EXPLOSION_NORMAL,
+            loc.x + (player.eyeLocation.direction.x * 5),
+            loc.y + (player.eyeLocation.direction.y),
+            loc.z + (player.eyeLocation.direction.z * 5),
+            100)
+
+        val damageLoc = Location(
+                player.world,
+            loc.x + (player.eyeLocation.direction.x * 5),
+            loc.y + (player.eyeLocation.direction.y ),
+            loc.z + (player.eyeLocation.direction.z * 5)
+        )
+
+        player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
+            if (target is LivingEntity) target.damage(5.0)
+        }
+    }
+
+    // 쉬좌 스킬
+    override fun onShiftLeftClick(event: PlayerInteractEvent) {
+        val player = event.player
+        val loc = player.location
+        player.spawnParticle(Particle.EXPLOSION_NORMAL,
+            loc.x + (player.eyeLocation.direction.x * 5),
+            loc.y + (player.eyeLocation.direction.y),
+            loc.z + (player.eyeLocation.direction.z * 5),
+            100)
+
+        val damageLoc = Location(
+                player.world,
+            loc.x + (player.eyeLocation.direction.x * 5),
+            loc.y + (player.eyeLocation.direction.y ),
+            loc.z + (player.eyeLocation.direction.z * 5)
+        )
+
+        player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
+            if (target is LivingEntity) target.velocity = player.velocity.add(player.location.direction.multiply(2))
+        }
+    }
+
+    // 쉬우 스킬
+    override fun onShiftRightClick(event: PlayerInteractEvent) {
+        val player = event.player
+        val loc = player.location
+
+        for (i in 1..5) {
+            player.spawnParticle(
+                    Particle.SONIC_BOOM,
+                loc.x + (player.eyeLocation.direction.x * i),
+                loc.y + (player.eyeLocation.direction.y * i),
+                loc.z + (player.eyeLocation.direction.z * i),
+                1)
+
+            val damageLoc = Location(
+                    player.world,
+                loc.x + (player.eyeLocation.direction.x * i),
+                loc.y + (player.eyeLocation.direction.y * i),
+                loc.z + (player.eyeLocation.direction.z * i)
+            )
+
+            player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
+                if (target is LivingEntity) target.damage(5.0)
+            }
+        }
+
         player.velocity = player.velocity.add(player.location.direction.multiply(2))
-        player.spawnParticle(Particle.PORTAL, player.location, 1000, 1.0, 1.0, 1.0)
+        return
     }
 
 }
