@@ -1,5 +1,6 @@
 package amil.skill
 
+import amil.skill.weapon.Bard
 import amil.skill.weapon.Rapier
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -13,6 +14,8 @@ class Skill : JavaPlugin() {
 
         // weapons
         server.pluginManager.registerEvents(Rapier, this)
+
+        server.pluginManager.registerEvents(Bard, this)
     }
 
     override fun onDisable() {

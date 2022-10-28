@@ -36,7 +36,7 @@ object TestSkill : IWeapon {
 
         for (i in 1..5) {
             player.spawnParticle(
-                Particle.DRAGON_BREATH,
+                Particle.SONIC_BOOM,
                 loc.x + (player.eyeLocation.direction.x * i),
                 loc.y + (player.eyeLocation.direction.y * i),
                 loc.z + (player.eyeLocation.direction.z * i),
@@ -51,7 +51,7 @@ object TestSkill : IWeapon {
             )
 
             player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
-                    if (target is LivingEntity) target.damage(5.0)
+                    if (target is LivingEntity) if (target != player) target.damage(5.0, player)
                 }
         }
     }
@@ -74,7 +74,7 @@ object TestSkill : IWeapon {
         )
 
         player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
-            if (target is LivingEntity) target.damage(5.0)
+            if (target is LivingEntity) if (target != player) target.damage(5.0, player)
         }
     }
 
@@ -96,7 +96,7 @@ object TestSkill : IWeapon {
         )
 
         player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
-            if (target is LivingEntity) target.velocity = player.velocity.add(player.location.direction.multiply(2))
+            if (target is LivingEntity) if (target != player) target.velocity = player.velocity.add(player.location.direction.multiply(2))
         }
     }
 
@@ -121,7 +121,7 @@ object TestSkill : IWeapon {
             )
 
             player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
-                if (target is LivingEntity) target.damage(5.0)
+                if (target is LivingEntity) if (target != player) target.damage(5.0, player)
             }
         }
 
