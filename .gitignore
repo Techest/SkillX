@@ -119,4 +119,5 @@ run/
 
 # 프로젝트 제외 경로
 /server
+/.fleet/settings.json
 !/server/plugins/paper-1.19.2-188.jar
