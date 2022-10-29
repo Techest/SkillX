@@ -1,11 +1,13 @@
 package amil.skill
 
+import amil.skill.etc.JoinCheckerForScore
+import amil.skill.etc.ScoreCommand
 import amil.skill.weapon.Bard
 import amil.skill.weapon.Rapier
 import org.bukkit.plugin.java.JavaPlugin
 
 @Suppress("unused")
-class Skill : JavaPlugin() {
+class SkillX : JavaPlugin() {
 
     override fun onEnable() {
         logger.info("Skill Plugins Enabled")
@@ -16,6 +18,10 @@ class Skill : JavaPlugin() {
         server.pluginManager.registerEvents(Rapier, this)
 
         server.pluginManager.registerEvents(Bard, this)
+
+        // score
+        server.pluginManager.registerEvents(JoinCheckerForScore, this)
+        this.getCommand("score")?.setExecutor(ScoreCommand)
     }
 
     override fun onDisable() {

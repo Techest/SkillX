@@ -5,16 +5,10 @@ import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.Sound
-import org.bukkit.block.Block
-import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.Entity
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.LivingEntity
-import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
-import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.player.PlayerInteractEvent
-import kotlin.math.min
 
 object TestSkill : IWeapon {
 
@@ -51,8 +45,8 @@ object TestSkill : IWeapon {
             )
 
             player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
-                    if (target is LivingEntity) if (target != player) target.damage(5.0, player)
-                }
+                if (target is LivingEntity) if (target != player) target.damage(5.0, player)
+            }
         }
     }
 
@@ -60,16 +54,18 @@ object TestSkill : IWeapon {
     override fun onRightClick(event: PlayerInteractEvent) {
         val player = event.player
         val loc = player.location
-        player.spawnParticle(Particle.EXPLOSION_NORMAL,
+        player.spawnParticle(
+            Particle.EXPLOSION_NORMAL,
             loc.x + (player.eyeLocation.direction.x * 5),
             loc.y + (player.eyeLocation.direction.y),
             loc.z + (player.eyeLocation.direction.z * 5),
-            100)
+            100
+        )
 
         val damageLoc = Location(
-                player.world,
+            player.world,
             loc.x + (player.eyeLocation.direction.x * 5),
-            loc.y + (player.eyeLocation.direction.y ),
+            loc.y + (player.eyeLocation.direction.y),
             loc.z + (player.eyeLocation.direction.z * 5)
         )
 
@@ -82,21 +78,24 @@ object TestSkill : IWeapon {
     override fun onShiftLeftClick(event: PlayerInteractEvent) {
         val player = event.player
         val loc = player.location
-        player.spawnParticle(Particle.EXPLOSION_NORMAL,
+        player.spawnParticle(
+            Particle.EXPLOSION_NORMAL,
             loc.x + (player.eyeLocation.direction.x * 5),
             loc.y + (player.eyeLocation.direction.y),
             loc.z + (player.eyeLocation.direction.z * 5),
-            100)
+            100
+        )
 
         val damageLoc = Location(
-                player.world,
+            player.world,
             loc.x + (player.eyeLocation.direction.x * 5),
-            loc.y + (player.eyeLocation.direction.y ),
+            loc.y + (player.eyeLocation.direction.y),
             loc.z + (player.eyeLocation.direction.z * 5)
         )
 
         player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
-            if (target is LivingEntity) if (target != player) target.velocity = player.velocity.add(player.location.direction.multiply(2))
+            if (target is LivingEntity) if (target != player) target.velocity =
+                player.velocity.add(player.location.direction.multiply(2))
         }
     }
 
@@ -107,14 +106,15 @@ object TestSkill : IWeapon {
 
         for (i in 1..5) {
             player.spawnParticle(
-                    Particle.SONIC_BOOM,
+                Particle.SONIC_BOOM,
                 loc.x + (player.eyeLocation.direction.x * i),
                 loc.y + (player.eyeLocation.direction.y * i),
                 loc.z + (player.eyeLocation.direction.z * i),
-                1)
+                1
+            )
 
             val damageLoc = Location(
-                    player.world,
+                player.world,
                 loc.x + (player.eyeLocation.direction.x * i),
                 loc.y + (player.eyeLocation.direction.y * i),
                 loc.z + (player.eyeLocation.direction.z * i)
