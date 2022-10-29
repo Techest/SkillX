@@ -2,6 +2,8 @@ package amil.skill
 
 import amil.skill.etc.JoinCheckerForScore
 import amil.skill.etc.ScoreCommand
+import amil.skill.utils.UserListDebugCommand
+import amil.skill.utils.UserListHandler
 import amil.skill.weapon.Bard
 import amil.skill.weapon.Rapier
 import org.bukkit.plugin.java.JavaPlugin
@@ -20,8 +22,8 @@ class SkillX : JavaPlugin() {
         server.pluginManager.registerEvents(Bard, this)
 
         // score
-        server.pluginManager.registerEvents(JoinCheckerForScore, this)
-        this.getCommand("score")?.setExecutor(ScoreCommand)
+        server.pluginManager.registerEvents(UserListHandler, this)
+        this.getCommand("userlist")?.setExecutor(UserListDebugCommand)
     }
 
     override fun onDisable() {

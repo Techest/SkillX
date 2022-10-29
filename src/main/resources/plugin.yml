@@ -8,5 +8,5 @@ libraries:
 commands:
   score:
     description: "For debugging score"
-    usage: "/score"
+    usage: "/userlist"
     permission: SkillX.debug.scroe
