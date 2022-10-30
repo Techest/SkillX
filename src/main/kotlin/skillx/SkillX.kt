@@ -2,7 +2,7 @@ package skillx
 
 import org.bukkit.plugin.java.JavaPlugin
 import skillx.skills.TestWeapon
-import skillx.utils.WeaponHandler
+import skillx.handlers.WeaponHandler
 
 class SkillX : JavaPlugin() {
 

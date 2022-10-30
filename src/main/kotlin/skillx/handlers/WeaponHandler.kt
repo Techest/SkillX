@@ -1,4 +1,4 @@
-package skillx.utils
+package skillx.handlers
 
 import IWeapon
 import org.bukkit.plugin.java.JavaPlugin
