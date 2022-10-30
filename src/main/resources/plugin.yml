@@ -1,12 +1,7 @@
 name: SkillX
 version: '${version}'
-main: amil.skill.SkillX
+main: skillx.SkillX
 api-version: 1.19
 libraries:
   - org.jetbrains.kotlin:kotlin-stdlib:1.7.20
   - org.jetbrains.kotlin:kotlin-reflect:1.7.20
-commands:
-  score:
-    description: "For debugging score"
-    usage: "/userlist"
-    permission: SkillX.debug.scroe
