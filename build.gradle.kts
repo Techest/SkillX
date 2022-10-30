@@ -26,6 +26,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
     paperDevBundle("1.19.2-R0.1-SNAPSHOT")
+    testImplementation(kotlin("test"))
 }
 
 extra.apply {
@@ -42,8 +43,17 @@ tasks {
             expand(extra.properties)
         }
     }
-    jar {
+
+    /*jar {
         archiveFileName.set(project.name + "-dev.jar")
         destinationDirectory.set(file(".server/plugins"))
+    }*/
+
+    test {
+        useJUnitPlatform()
+    }
+
+    reobfJar {
+        outputJar.set(file(".server/plugins/${project.name}-${project.version}-reobf.jar"))
     }
 }

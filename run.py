@@ -24,10 +24,11 @@ DEBUG_PORT = 5005  # ref: https://www.spigotmc.org/wiki/intellij-debug-your-plug
 #     TODO make this
 # ]
 JVM_ARGS = [
+    "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005"
     # "add here"
 ]
 JAR_ARGS = [
-    # "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005", # ref: https://www.spigotmc.org/wiki/intellij-debug-your-plugin/
+    # ref: https://www.spigotmc.org/wiki/intellij-debug-your-plugin/
     "--nogui"  # '--nogui' and 'nogui' both work
     # "add here"
 ]
@@ -164,7 +165,7 @@ def start():
         f"cd {SERVER_PATH} && "
         + f"{JAVA_PATH} -Xms{MEMORY}G -Xmx{MEMORY}G "
         + " ".join(JVM_ARGS)
-        + f"-jar {SERVER_JAR_PATH} "
+        + f" -jar {SERVER_JAR_PATH} "
         + " ".join(JAR_ARGS)
     )
 
