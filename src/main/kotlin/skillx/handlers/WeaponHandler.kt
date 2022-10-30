@@ -18,30 +18,17 @@ object WeaponHandler {
     }
 
     /**
-     * @see Map is not allow duplicate name;
-     *      but checking to manually for handling
-     * @return if failed to register, return false
-     * @param T IWeapon | Array<IWeapon>
+     * @param elements
+     *        Array : *Array
+     *        else: register(weapon1, weapon2)
      * else return true!
      */
-    inline fun <reified T> register(t: T): Boolean {
-        // not an array
-        if (t is IWeapon) {
-            if (weapons[t.name] == null)
-                weapons[t.name] = t
+    fun register(vararg elements: IWeapon): Boolean {
+        elements.forEach { wea: IWeapon ->
+            if (weapons[wea.name] == null)
+                weapons[wea.name] = wea
             return true
         }
-
-        // array
-        if (t is Array<*> && t.isArrayOf<IWeapon>()) {
-            t.forEach { wea ->
-                if (wea !is IWeapon) return false
-                if (weapons[wea.name] == null)
-                    weapons[wea.name] = wea
-                return true
-            }
-        }
-
         return false
     }
 
