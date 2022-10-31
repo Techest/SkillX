@@ -9,10 +9,15 @@ import skillx.handlers.WeaponHandler
 import skillx.skills.amil.Bard
 import skillx.skills.amil.Kight
 import skillx.skills.amil.Rapier
+import skillx.skills.tmvkrpxl0.HomingTurret
 
 class SkillX : JavaPlugin() {
+    companion object {
+        lateinit var instance: SkillX
+    }
 
     override fun onEnable() {
+        instance = this
         logger.info("SkillX Enable!")
 
         ////////////////////////////////////////////////
@@ -30,9 +35,13 @@ class SkillX : JavaPlugin() {
             Bard // GOLDEN_SWORD
         )
 
+
+        WeaponHandler.register(HomingTurret)
+        
+        // UserList
         server.pluginManager.registerEvents(UserListHandler, this)
         this.getCommand("userlist")?.setExecutor(UserListDebugCommand)
-
+        
         this.getCommand("gui")?.setExecutor(TestGuiCommand)
 
         WeaponHandler.weapons.keys.forEach { name ->
