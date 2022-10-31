@@ -1,5 +1,7 @@
 package skillx
 
+import amil.skill.utils.UserListDebugCommand
+import amil.skill.utils.UserListHandler
 import org.bukkit.plugin.java.JavaPlugin
 import skillx.skills.TestWeapon
 import skillx.handlers.WeaponHandler
@@ -26,6 +28,9 @@ class SkillX : JavaPlugin() {
             Rapier, // FLINT
             Bard // GOLDEN_SWORD
         )
+
+        server.pluginManager.registerEvents(UserListHandler, this)
+        this.getCommand("userlist")?.setExecutor(UserListDebugCommand)
 
         WeaponHandler.weapons.keys.forEach { name ->
             logger.info("$name is registed.")
