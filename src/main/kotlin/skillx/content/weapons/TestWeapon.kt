@@ -1,6 +1,6 @@
-package skillx.skills
+package skillx.weapons
 
-import IWeapon
+import skillx.core.interfaces.IWeapon
 import org.bukkit.Material
 import org.bukkit.event.player.PlayerInteractEvent
 

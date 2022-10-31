@@ -1,6 +1,6 @@
-package skillx.skills.amil
+package skillx.content.weapons.amil
 
-import IWeapon
+import skillx.core.interfaces.IWeapon
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity

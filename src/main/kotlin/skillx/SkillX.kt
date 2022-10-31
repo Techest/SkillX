@@ -1,15 +1,15 @@
 package skillx
 
-import amil.skill.utils.TestGuiCommand
-import amil.skill.utils.UserListDebugCommand
-import amil.skill.utils.UserListHandler
+import skillx.content.commands.TestGUI
 import org.bukkit.plugin.java.JavaPlugin
-import skillx.skills.TestWeapon
-import skillx.handlers.WeaponHandler
-import skillx.skills.amil.Bard
-import skillx.skills.amil.Kight
-import skillx.skills.amil.Rapier
-import skillx.skills.tmvkrpxl0.HomingTurret
+import skillx.content.weapons.amil.Bard
+import skillx.content.weapons.amil.Kight
+import skillx.content.weapons.amil.Rapier
+import skillx.content.weapons.tmvkrpxl0.HomingTurret
+import skillx.core.commands.UserListDebugCommand
+import skillx.core.commands.UserListHandler
+import skillx.weapons.TestWeapon
+import skillx.core.handlers.WeaponHandler
 
 class SkillX : JavaPlugin() {
     companion object {
@@ -41,8 +41,8 @@ class SkillX : JavaPlugin() {
         // UserList
         server.pluginManager.registerEvents(UserListHandler, this)
         this.getCommand("userlist")?.setExecutor(UserListDebugCommand)
-        
-        this.getCommand("gui")?.setExecutor(TestGuiCommand)
+
+        this.getCommand("gui")?.setExecutor(TestGUI)
 
         WeaponHandler.weapons.keys.forEach { name ->
             logger.info("$name is registed.")

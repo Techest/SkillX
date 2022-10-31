@@ -1,4 +1,4 @@
-package skillx.projectiles
+package skillx.core.projectiles
 
 import com.mojang.math.Vector3f
 import net.minecraft.world.entity.LivingEntity
@@ -6,16 +6,23 @@ import net.minecraft.world.entity.projectile.Arrow
 import net.minecraft.world.level.Level
 import net.minecraft.world.phys.EntityHitResult
 import net.minecraft.world.phys.Vec3
-import skillx.utils.angle
-import skillx.utils.invert
-import skillx.utils.radian
-import skillx.utils.rotateByAxis
+import skillx.core.utils.angle
+import skillx.core.utils.invert
+import skillx.core.utils.radian
+import skillx.core.utils.rotateByAxis
 import kotlin.math.absoluteValue
 
 var MAX_TURNING_ANGLE = (3.1415927F / 12).radian()
 var IGNORE_INVULTIME = true
 
-class HomingArrow(world: Level, x: Double, y: Double, z: Double, var target: LivingEntity? = null, var followDelay: Int) : Arrow(world, x, y, z) {
+class HomingArrow(
+    world: Level,
+    x: Double,
+    y: Double,
+    z: Double,
+    var target: LivingEntity? = null,
+    var followDelay: Int,
+) : Arrow(world, x, y, z) {
     override fun tick() {
         super.tick()
         if (followDelay > 0) followDelay--

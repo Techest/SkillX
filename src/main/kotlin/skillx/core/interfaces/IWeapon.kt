@@ -1,3 +1,5 @@
+package skillx.core.interfaces
+
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

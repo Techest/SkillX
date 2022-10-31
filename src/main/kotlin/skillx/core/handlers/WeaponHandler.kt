@@ -1,6 +1,6 @@
-package skillx.handlers
+package skillx.core.handlers
 
-import IWeapon
+import skillx.core.interfaces.IWeapon
 import org.bukkit.plugin.java.JavaPlugin
 
 object WeaponHandler {

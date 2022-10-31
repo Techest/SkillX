@@ -1,4 +1,4 @@
-package skillx.utils
+package skillx.core.utils
 
 import com.mojang.math.Vector3f
 import net.minecraft.core.particles.DustParticleOptions

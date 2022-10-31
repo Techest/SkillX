@@ -1,6 +1,6 @@
-package skillx.skills.tmvkrpxl0
+package skillx.content.weapons.tmvkrpxl0
 
-import IWeapon
+import skillx.core.interfaces.IWeapon
 import com.mojang.math.Vector3f
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.projectile.ProjectileUtil
@@ -13,10 +13,10 @@ import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.scheduler.BukkitRunnable
 import skillx.SkillX
-import skillx.projectiles.HomingArrow
+import skillx.core.projectiles.HomingArrow
 import java.util.Stack
 
-object HomingTurret: IWeapon {
+object HomingTurret : IWeapon {
     override val name = "유도 터렛"
     override val description = "바라보고 있는 적을 지지고 볶습니다"
     override val item = Material.IRON_INGOT
@@ -43,7 +43,11 @@ object HomingTurret: IWeapon {
 
         if (blockedResult.type != HitResult.Type.MISS &&
             start.distanceToSqr(
-                Vec3(blockedResult.blockPos.x.toDouble(), blockedResult.blockPos.y.toDouble(), blockedResult.blockPos.z.toDouble())
+                Vec3(
+                    blockedResult.blockPos.x.toDouble(),
+                    blockedResult.blockPos.y.toDouble(),
+                    blockedResult.blockPos.z.toDouble()
+                )
             ) < start.distanceToSqr(lookingAt.location)
         ) return
 
@@ -58,13 +62,12 @@ object HomingTurret: IWeapon {
         ).forEach { spawnPosLocal.push(it) }
 
 
-
         val toHeadSpace = Vector3f.YN.rotationDegrees(player.yRot)
         toHeadSpace.mul(Vector3f.XP.rotationDegrees(player.xRot))
 
         val offset = player.eyePosition
 
-        object: BukkitRunnable() {
+        object : BukkitRunnable() {
             override fun run() {
                 repeat(2) {
                     if (spawnPosLocal.empty()) {
@@ -80,7 +83,8 @@ object HomingTurret: IWeapon {
                         lookingAt.entity as LivingEntity,
                         10
                     )
-                    homingArrow.deltaMovement = lookingAt.entity.position().subtract(homingArrow.position()).normalize().scale(2.0)
+                    homingArrow.deltaMovement =
+                        lookingAt.entity.position().subtract(homingArrow.position()).normalize().scale(2.0)
                     homingArrow.isNoGravity = true
                     player.level.addFreshEntity(homingArrow)
                 }

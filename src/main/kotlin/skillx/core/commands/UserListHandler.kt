@@ -1,7 +1,7 @@
 /**
 * 스코어보드에 플레이어 목록 표시
 */
-package amil.skill.utils
+package skillx.core.commands
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
