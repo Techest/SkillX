@@ -23,7 +23,7 @@ class SkillX : JavaPlugin() {
         ////////////////////////////////////////////////
         // ^----------[ Register Weapons ]----------^ //
 
-        // For Test, Deafult Weapon
+        // For Test, Default Weapon
         WeaponHandler.register(TestWeapon)
 
         /**
@@ -37,7 +37,7 @@ class SkillX : JavaPlugin() {
 
 
         WeaponHandler.register(HomingTurret)
-        
+
         // UserList
         server.pluginManager.registerEvents(UserListHandler, this)
         this.getCommand("userlist")?.setExecutor(UserListDebugCommand)
@@ -45,7 +45,7 @@ class SkillX : JavaPlugin() {
         this.getCommand("gui")?.setExecutor(TestGUI)
 
         WeaponHandler.weapons.keys.forEach { name ->
-            logger.info("$name is registed.")
+            logger.info("$name is register.")
         }
 
         WeaponHandler.initWeapons(this)
