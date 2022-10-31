@@ -1,5 +1,8 @@
 package skillx
 
+import amil.skill.utils.TestGuiCommand
+import amil.skill.utils.UserListDebugCommand
+import amil.skill.utils.UserListHandler
 import org.bukkit.plugin.java.JavaPlugin
 import skillx.skills.TestWeapon
 import skillx.handlers.WeaponHandler
@@ -32,7 +35,14 @@ class SkillX : JavaPlugin() {
             Bard // GOLDEN_SWORD
         )
 
+
         WeaponHandler.register(HomingTurret)
+        
+        // UserList
+        server.pluginManager.registerEvents(UserListHandler, this)
+        this.getCommand("userlist")?.setExecutor(UserListDebugCommand)
+        
+        this.getCommand("gui")?.setExecutor(TestGuiCommand)
 
         WeaponHandler.weapons.keys.forEach { name ->
             logger.info("$name is registed.")
