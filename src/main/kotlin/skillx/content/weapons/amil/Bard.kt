@@ -4,7 +4,6 @@ import skillx.core.interfaces.IWeapon
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
-import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
@@ -15,11 +14,6 @@ object Bard : IWeapon {
     override val description = "Bard"
 
     override val item = Material.GOLDEN_SWORD
-
-    @EventHandler
-    override fun action(event: PlayerInteractEvent) {
-        super.action(event)
-    }
 
     // 우클릭 스킬
     override fun onRightClick(event: PlayerInteractEvent) {
