@@ -1,7 +1,7 @@
 package skillx
 
-import skillx.content.commands.TestGUI
 import org.bukkit.plugin.java.JavaPlugin
+import skillx.content.commands.SelectCommand
 import skillx.content.weapons.amil.Bard
 import skillx.content.weapons.amil.Kight
 import skillx.content.weapons.amil.Rapier
@@ -42,7 +42,7 @@ class SkillX : JavaPlugin() {
         server.pluginManager.registerEvents(UserListHandler, this)
         this.getCommand("userlist")?.setExecutor(UserListDebugCommand)
 
-        this.getCommand("gui")?.setExecutor(TestGUI)
+        this.getCommand("select")?.setExecutor(SelectCommand)
 
         WeaponHandler.weapons.keys.forEach { name ->
             logger.info("$name is register.")
