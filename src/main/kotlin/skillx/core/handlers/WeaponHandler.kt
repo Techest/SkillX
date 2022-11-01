@@ -2,6 +2,8 @@ package skillx.core.handlers
 
 import skillx.core.interfaces.IWeapon
 import org.bukkit.plugin.java.JavaPlugin
+import skillx.SkillX
+import java.util.logging.Level
 
 object WeaponHandler {
 
@@ -23,13 +25,14 @@ object WeaponHandler {
      *        else: register(weapon1, weapon2)
      * else return true!
      */
-    fun register(vararg elements: IWeapon): Boolean {
+    fun register(vararg elements: IWeapon) {
         elements.forEach { wea: IWeapon ->
             if (weapons[wea.name] == null)
                 weapons[wea.name] = wea
-            return true
+            else
+                SkillX.instance.logger.log(Level.SEVERE, "Cannot load ${wea.name}, already registed.")
         }
-        return false
+
     }
 
     /**
