@@ -10,3 +10,4 @@ commands:
     select:
         description: open select inventory
         usage: /select
+        permission: skillx.debug.select
