@@ -22,12 +22,11 @@ object SelectCommand : CommandExecutor {
                 var count = 0
                 WeaponHandler.weapons.values.forEach { wea ->
                     select_inv.setItem(count, createItem(wea.name, wea.item))
-                    count = +1
+                    count += 1
                 }
                 sender.openInventory(select_inv)
             }
         }
-
         return true
     }
 }

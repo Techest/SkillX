@@ -27,6 +27,13 @@ class SkillX : JavaPlugin() {
         WeaponHandler.register(TestWeapon)
 
         /**
+         * @author PleahMaCaka
+         */
+        WeaponHandler.register(
+            // STUFF // STUFF
+        )
+
+        /**
          * @author DwarfAmil
          */
         WeaponHandler.register(
@@ -35,13 +42,18 @@ class SkillX : JavaPlugin() {
             Bard // GOLDEN_SWORD
         )
 
-
-        WeaponHandler.register(HomingTurret)
+        /**
+         * @author tmvkrpxl0
+         */
+        WeaponHandler.register(
+            HomingTurret // IRON_INGOT
+        )
 
         // UserList
         server.pluginManager.registerEvents(UserListHandler, this)
         this.getCommand("userlist")?.setExecutor(UserListDebugCommand)
 
+        // debug item selection
         this.getCommand("select")?.setExecutor(SelectCommand)
 
         WeaponHandler.weapons.keys.forEach { name ->
