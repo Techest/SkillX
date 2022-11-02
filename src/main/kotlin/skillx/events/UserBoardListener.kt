@@ -1,4 +1,4 @@
-package skillx.core.events
+package skillx.events
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
@@ -14,7 +14,7 @@ val userBoard = Bukkit.getScoreboardManager().newScoreboard
 
 val objective = userBoard.registerNewObjective("123", Criteria.DUMMY, Component.text("Users"))
 
-object UserBoardListenr : Listener {
+object UserBoardListener : Listener {
 
     init {
         objective.displaySlot = DisplaySlot.SIDEBAR
@@ -32,5 +32,6 @@ object UserBoardListenr : Listener {
     fun leaveChecker(event: PlayerQuitEvent) {
         userBoard.resetScores(event.player.name)
     }
+
 }
 

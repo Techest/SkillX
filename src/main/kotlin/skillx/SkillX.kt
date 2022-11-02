@@ -1,13 +1,15 @@
 package skillx
 
 import org.bukkit.plugin.java.JavaPlugin
-import skillx.content.weapons.amil.Bard
-import skillx.content.weapons.amil.Kight
-import skillx.content.weapons.amil.Rapier
-import skillx.content.weapons.tmvkrpxl0.HomingTurret
-import skillx.core.commands.*
-import skillx.core.events.SelectionClickListener
-import skillx.core.events.UserBoardListenr
+import skillx.commands.debug.SelectCommand
+import skillx.commands.debug.SelectTabAutoComplete
+import skillx.commands.debug.UserBoardDebug
+import skillx.weapons.amil.Bard
+import skillx.weapons.amil.Kight
+import skillx.weapons.amil.Rapier
+import skillx.weapons.tmvkrpxl0.HomingTurret
+import skillx.events.SelectionClickListener
+import skillx.events.UserBoardListener
 import skillx.weapons.TestWeapon
 import skillx.core.handlers.WeaponHandler
 
@@ -50,7 +52,7 @@ class SkillX : JavaPlugin() {
         )
 
         // UserList
-        server.pluginManager.registerEvents(UserBoardListenr, this)
+        server.pluginManager.registerEvents(UserBoardListener, this)
         this.getCommand("userlist")?.setExecutor(UserBoardDebug)
 
         // debug item selection

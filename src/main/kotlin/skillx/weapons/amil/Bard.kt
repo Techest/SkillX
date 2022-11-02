@@ -1,4 +1,4 @@
-package skillx.content.weapons.amil
+package skillx.weapons.amil
 
 import skillx.core.interfaces.IWeapon
 import org.bukkit.Material

@@ -1,4 +1,4 @@
-package skillx.content.weapons.tmvkrpxl0
+package skillx.weapons.tmvkrpxl0
 
 import skillx.core.interfaces.IWeapon
 import com.mojang.math.Vector3f

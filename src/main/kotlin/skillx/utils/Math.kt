@@ -1,4 +1,4 @@
-package skillx.core.utils
+package skillx.utils
 
 import com.mojang.math.Vector3f
 import net.minecraft.util.Mth

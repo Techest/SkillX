@@ -6,10 +6,10 @@ import net.minecraft.world.entity.projectile.Arrow
 import net.minecraft.world.level.Level
 import net.minecraft.world.phys.EntityHitResult
 import net.minecraft.world.phys.Vec3
-import skillx.core.utils.angle
-import skillx.core.utils.invert
-import skillx.core.utils.radian
-import skillx.core.utils.rotateByAxis
+import skillx.utils.angle
+import skillx.utils.invert
+import skillx.utils.radian
+import skillx.utils.rotateByAxis
 import kotlin.math.absoluteValue
 
 var MAX_TURNING_ANGLE = (3.1415927F / 12).radian()

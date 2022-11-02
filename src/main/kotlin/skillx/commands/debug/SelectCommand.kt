@@ -1,4 +1,4 @@
-package skillx.core.commands
+package skillx.commands.debug
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
