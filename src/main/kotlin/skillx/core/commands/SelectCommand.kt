@@ -42,7 +42,7 @@ object SelectTabAutoComplete : TabCompleter {
         command: Command,
         label: String,
         args: Array<out String>?
-    ): MutableList<String>? {
+    ): MutableList<String> {
         if (arguments.isEmpty()) {
             arguments.add("weapon")
         }
