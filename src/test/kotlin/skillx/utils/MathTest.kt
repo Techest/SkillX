@@ -2,9 +2,7 @@ package skillx.utils
 
 import com.mojang.math.Vector3f
 import org.junit.jupiter.api.Test
-import skillx.core.utils.*
 import kotlin.math.abs
-
 
 class MathTest {
 
