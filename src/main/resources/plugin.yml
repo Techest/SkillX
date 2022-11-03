@@ -11,3 +11,8 @@ commands:
         description: open select inventory
         usage: /select
         permission: skillx.debug.select
+
+    userlist:
+        description: userlist
+        usage: /userlist
+        permission: skillx.debug.userlist
