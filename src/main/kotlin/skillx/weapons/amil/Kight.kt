@@ -25,7 +25,7 @@ object Kight : IWeapon {
 
         for (i in 1..5) {
             player.spawnParticle(
-                Particle.SONIC_BOOM,
+                Particle.SWEEP_ATTACK,
                 loc.x + (player.eyeLocation.direction.x * i),
                 loc.y + (player.eyeLocation.direction.y * i),
                 loc.z + (player.eyeLocation.direction.z * i),
@@ -63,7 +63,7 @@ object Kight : IWeapon {
             loc.z + (player.eyeLocation.direction.z * 5)
         )
 
-        player.world.getNearbyEntities(damageLoc, 1.0, 1.0, 1.0).forEach { target ->
+        player.world.getNearbyEntities(damageLoc, 3.0, 1.0, 3.0).forEach { target ->
             if (target is LivingEntity) if (target != player) target.damage(5.0, player)
         }
     }
@@ -98,7 +98,7 @@ object Kight : IWeapon {
 
         for (i in 1..5) {
             player.spawnParticle(
-                Particle.SONIC_BOOM,
+                Particle.SWEEP_ATTACK,
                 loc.x + (player.eyeLocation.direction.x * i),
                 loc.y + (player.eyeLocation.direction.y * i),
                 loc.z + (player.eyeLocation.direction.z * i),
