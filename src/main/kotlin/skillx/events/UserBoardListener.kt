@@ -12,7 +12,9 @@ import org.bukkit.scoreboard.DisplaySlot
 
 val userBoard = Bukkit.getScoreboardManager().newScoreboard
 
-val objective = userBoard.registerNewObjective("123", Criteria.DUMMY, Component.text("Users"))
+val objective = userBoard.registerNewObjective("kill", Criteria.TOTAL_KILL_COUNT, Component.text("Users"))
+
+var killStat = 0
 
 object UserBoardListener : Listener {
 
