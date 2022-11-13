@@ -28,13 +28,13 @@ object Kight : IWeapon {
     override fun onRightClick(event: PlayerInteractEvent) {
         val player = event.player
 
-        SkillHandler.drawLineWithDamage(5, Particle.EXPLOSION_NORMAL, player)
+        SkillHandler.particleWithDamage(5, Particle.EXPLOSION_NORMAL, player, 10, 5.0)
     }
 
     override fun onShiftLeftClick(event: PlayerInteractEvent) {
         val player = event.player
 
-        SkillHandler.drawLineWithVelocity(5, Particle.EXPLOSION_NORMAL, player, 2)
+        SkillHandler.particleWithVelocity(5, Particle.EXPLOSION_NORMAL, player, 10, 2)
     }
 
     override fun onShiftRightClick(event: PlayerInteractEvent) {

@@ -12,6 +12,7 @@ import skillx.events.SelectionClickListener
 import skillx.events.UserBoardListener
 import skillx.weapons.TestWeapon
 import skillx.core.handlers.WeaponHandler
+import skillx.weapons.amil.Explosioner
 
 class SkillX : JavaPlugin() {
     companion object {
@@ -41,7 +42,8 @@ class SkillX : JavaPlugin() {
         WeaponHandler.register(
             Kight, // IRON_SWORD
             Rapier, // FLINT
-            Bard // GOLDEN_SWORD
+            Bard, // GOLDEN_SWORD
+            Explosioner // GUNPOWDER
         )
 
         /**

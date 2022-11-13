@@ -7,6 +7,7 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import skillx.utils.SkillHandler
 
 object Bard : IWeapon {
 
@@ -14,6 +15,12 @@ object Bard : IWeapon {
     override val description = "Bard"
 
     override val item = Material.GOLDEN_SWORD
+
+    override fun onLeftClick(event: PlayerInteractEvent) {
+        val player = event.player
+
+        SkillHandler.drawLineWithDamage(5, Particle.SPELL_WITCH, player)
+    }
 
     // 우클릭 스킬
     override fun onRightClick(event: PlayerInteractEvent) {
@@ -43,7 +50,7 @@ object Bard : IWeapon {
         player.getNearbyEntities(8.0, 1.0, 8.0)
 
         player.world.getNearbyEntities(loc, 5.0, 1.0, 5.0).forEach { target ->
-            if (target is LivingEntity) target.addPotionEffect(PotionEffect(PotionEffectType.WITHER, 100, 1))
+            if (target is LivingEntity) if (target != player) target.addPotionEffect(PotionEffect(PotionEffectType.WITHER, 100, 1))
         }
     }
 

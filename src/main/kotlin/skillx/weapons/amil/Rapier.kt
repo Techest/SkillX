@@ -20,6 +20,12 @@ object Rapier : IWeapon {
         SkillHandler.drawLineWithDamage(5, Particle.SONIC_BOOM, player)
     }
 
+    override fun onRightClick(event: PlayerInteractEvent) {
+        val player = event.player
+
+        
+    }
+
     override fun onShiftLeftClick(event: PlayerInteractEvent) {
         val player = event.player
 
@@ -27,5 +33,11 @@ object Rapier : IWeapon {
 
         player.velocity = player.velocity.add(player.location.direction.multiply(-2))
         return
+    }
+
+    override fun onShiftRightClick(event: PlayerInteractEvent) {
+        val player = event.player
+
+        SkillHandler.drawLineWithVelocity(5, Particle.SONIC_BOOM, player, 2)
     }
 }
