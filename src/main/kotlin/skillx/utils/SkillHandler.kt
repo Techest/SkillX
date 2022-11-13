@@ -1,6 +1,5 @@
 package skillx.utils
 
-import org.bukkit.Effect
 import org.bukkit.Location
 import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
