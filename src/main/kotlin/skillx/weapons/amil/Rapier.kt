@@ -20,12 +20,6 @@ object Rapier : IWeapon {
         SkillHandler.drawLineWithDamage(5, Particle.SONIC_BOOM, player)
     }
 
-    override fun onRightClick(event: PlayerInteractEvent) {
-        val player = event.player
-
-        
-    }
-
     override fun onShiftLeftClick(event: PlayerInteractEvent) {
         val player = event.player
 
