@@ -5,7 +5,7 @@ api-version: 1.19
 libraries:
     - org.jetbrains.kotlin:kotlin-stdlib:1.7.20
     - org.jetbrains.kotlin:kotlin-reflect:1.7.20
-
+    - io.github.monun:kommand-core:2.14.0
 commands:
     select:
         description: open select inventory

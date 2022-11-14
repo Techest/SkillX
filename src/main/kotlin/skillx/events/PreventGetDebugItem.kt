@@ -4,13 +4,13 @@ import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
-import skillx.commands.debug.select_inv
+import skillx.inventory.skDebugInventory
 
 object PreventGetDebugItem : Listener {
 
     @EventHandler
     fun onClicked(event: InventoryClickEvent) {
-        if (event.inventory != select_inv) return
+        if (event.inventory != skDebugInventory) return
 
         event.isCancelled = true
 

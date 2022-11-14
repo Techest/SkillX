@@ -27,6 +27,7 @@ dependencies {
     implementation(kotlin("stdlib"))
     paperDevBundle("1.19.2-R0.1-SNAPSHOT")
     testImplementation(kotlin("test"))
+    implementation("io.github.monun:kommand-api:2.14.0")
 }
 
 extra.apply {
@@ -48,6 +49,13 @@ tasks {
         archiveFileName.set(project.name + "-dev.jar")
         destinationDirectory.set(file(".server/plugins"))
     }*/
+
+    processResources {
+        filesMatching("*.yml") {
+            expand(project.properties)
+            expand(extra.properties)
+        }
+    }
 
     test {
         useJUnitPlatform()

@@ -1,9 +1,8 @@
 package skillx
 
+import io.github.monun.kommand.PluginKommand
 import org.bukkit.plugin.java.JavaPlugin
-import skillx.commands.debug.SelectCommand
-import skillx.commands.debug.SelectTabAutoComplete
-import skillx.commands.debug.UserBoardDebug
+import io.github.monun.kommand.kommand
 import skillx.weapons.amil.Bard
 import skillx.weapons.amil.Kight
 import skillx.weapons.amil.Rapier
@@ -12,6 +11,7 @@ import skillx.events.PreventGetDebugItem
 import skillx.events.PlayerJoinListener
 import skillx.weapons.TestWeapon
 import skillx.core.handlers.WeaponHandler
+import skillx.kommand.debug.SXDebugKommand
 import skillx.weapons.amil.Explosioner
 
 class SkillX : JavaPlugin() {
@@ -26,6 +26,8 @@ class SkillX : JavaPlugin() {
 
         server.pluginManager.registerEvents(PlayerJoinListener, this)
         server.pluginManager.registerEvents(PreventGetDebugItem, this)
+
+        registerKommands()
 
         ////////////////////////////////////////////////
         // ^----------[ Register Weapons ]----------^ //
@@ -55,8 +57,8 @@ class SkillX : JavaPlugin() {
         ////////////////////////////////////////////////
     }
 
-    override fun onDisable() {
-
+    private fun registerKommands() = kommand {
+        SXDebugKommand.register(this@SkillX, this@kommand)
     }
 
 }
