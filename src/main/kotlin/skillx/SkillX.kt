@@ -25,8 +25,15 @@ class SkillX : JavaPlugin() {
         server.pluginManager.registerEvents(PlayerJoinListener, this)
         server.pluginManager.registerEvents(PreventGetDebugItem, this)
 
+        registerWeapons()
         registerKommands()
+    }
 
+    private fun registerKommands() = kommand {
+        SXDebugKommand.register(this@SkillX, this@kommand)
+    }
+
+    private fun registerWeapons() {
         ////////////////////////////////////////////////
         // ^----------[ Register Weapons ]----------^ //
         WeaponHandler.register(
@@ -50,10 +57,6 @@ class SkillX : JavaPlugin() {
         WeaponHandler.initWeapons(this)
         // ^----------[ Register Weapons ]----------^ //
         ////////////////////////////////////////////////
-    }
-
-    private fun registerKommands() = kommand {
-        SXDebugKommand.register(this@SkillX, this@kommand)
     }
 
 }
