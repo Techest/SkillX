@@ -4,6 +4,7 @@ import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
 import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import skillx.core.IWeapon
 import skillx.core.SkillHandler
@@ -18,7 +19,10 @@ object Explosioner: IWeapon {
     override fun onLeftClick(event: PlayerInteractEvent) {
         val player = event.player
 
-        SkillHandler.particleWithDamage(8, Particle.EXPLOSION_LARGE, player, 10, 5.0)
+        SkillHandler.forwardParticleExcuteFunc(player, Particle.EXPLOSION_LARGE, 10, 8) {entity ->
+            if (entity !is LivingEntity) return@forwardParticleExcuteFunc
+            if(entity != player) entity.damage(5.0)
+        }
     }
 
     override fun onRightClick(event: PlayerInteractEvent) {
@@ -39,7 +43,19 @@ object Explosioner: IWeapon {
     override fun onShiftLeftClick(event: PlayerInteractEvent) {
         val player = event.player
 
-        SkillHandler.particleWithDamage(8, Particle.EXPLOSION_LARGE, player, 10, 5.0)
-        SkillHandler.particleWithEffect(8, Particle.ELECTRIC_SPARK, player, 50, PotionEffectType.POISON, 100, 1)
+        SkillHandler.forwardParticleExcuteFunc(player, Particle.EXPLOSION_LARGE, 10, 8) {entity ->
+            if (entity !is LivingEntity) return@forwardParticleExcuteFunc
+            if(entity != player) entity.damage(5.0)
+        }
+        SkillHandler.forwardParticleExcuteFunc(player, Particle.ELECTRIC_SPARK, 50, 8) {entity ->
+            if (entity !is LivingEntity) return@forwardParticleExcuteFunc
+            if(entity != player) entity.addPotionEffect(
+                PotionEffect(
+                    PotionEffectType.POISON,
+                    100,
+                    1
+                )
+            )
+        }
     }
 }

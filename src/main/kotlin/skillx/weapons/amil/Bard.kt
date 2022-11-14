@@ -19,7 +19,10 @@ object Bard : IWeapon {
     override fun onLeftClick(event: PlayerInteractEvent) {
         val player = event.player
 
-        SkillHandler.drawLineWithDamage(5, Particle.SPELL_WITCH, player)
+        SkillHandler.drawLineWithExecuteFunc(player, 5, Particle.SPELL_WITCH) { entity ->
+            if (entity !is LivingEntity) return@drawLineWithExecuteFunc
+            if(entity != player) entity.damage(5.0)
+        }
     }
 
     // 우클릭 스킬
