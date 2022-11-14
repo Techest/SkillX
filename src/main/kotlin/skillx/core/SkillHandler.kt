@@ -38,7 +38,7 @@ object SkillHandler {
         }
     }
 
-    fun forwardParticle(player: Player, particle: Particle, range: Int, distance: Double): Location {
+    fun forwardParticle(player: Player, particle: Particle, range: Int, distance: Int): Location {
         val loc = player.location
         val particleLoc = Location(
             player.world,
@@ -54,10 +54,15 @@ object SkillHandler {
         player: Player,
         particle: Particle,
         range: Int,
-        distance: Double,
+        distance: Int,
         func: (entity: Entity?) -> Unit,
     ) {
-        player.world.getNearbyEntities(forwardParticle(player, particle, range, distance), distance, 1.0, distance)
+        player.world.getNearbyEntities(
+            forwardParticle(player, particle, range, distance),
+            range.toDouble(),
+            1.0,
+            range.toDouble()
+        )
             .forEach { entity: Entity? ->
                 func(entity)
             }
