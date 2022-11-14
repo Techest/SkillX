@@ -12,7 +12,9 @@ object SXDebugKommand {
     internal fun register(plugin: SkillX, kommand: PluginKommand) {
         SXDebugKommand.plugin = plugin
         SkillX.instance.logger.info(":: skdebug registered.")
+
         kommand.register("skdebug") {
+            permission("skillx.debug.command")
 
             then("select") {
                 executes {
