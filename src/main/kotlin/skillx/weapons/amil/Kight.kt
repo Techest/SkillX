@@ -1,11 +1,11 @@
 package skillx.weapons.amil
 
-import skillx.core.interfaces.IWeapon
+import skillx.core.IWeapon
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.Sound
 import org.bukkit.event.player.PlayerInteractEvent
-import skillx.utils.SkillHandler
+import skillx.core.SkillHandler
 
 
 object Kight : IWeapon {
@@ -18,7 +18,6 @@ object Kight : IWeapon {
 
     override fun onLeftClick(event: PlayerInteractEvent) {
         val player = event.player
-        val loc = player.location
 
         player.playSound(player.location, Sound.ENTITY_ENDER_DRAGON_AMBIENT, 1.0f, 1.0f)
 

@@ -1,4 +1,4 @@
-package skillx.utils
+package skillx.core
 
 import org.bukkit.Location
 import org.bukkit.Particle

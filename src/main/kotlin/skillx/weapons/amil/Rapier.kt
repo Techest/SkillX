@@ -1,10 +1,10 @@
 package skillx.weapons.amil
 
-import skillx.core.interfaces.IWeapon
+import skillx.core.IWeapon
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.event.player.PlayerInteractEvent
-import skillx.utils.SkillHandler
+import skillx.core.SkillHandler
 
 object Rapier : IWeapon {
 

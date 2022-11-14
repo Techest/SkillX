@@ -1,13 +1,13 @@
 package skillx.weapons.amil
 
-import skillx.core.interfaces.IWeapon
+import skillx.core.IWeapon
 import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
-import skillx.utils.SkillHandler
+import skillx.core.SkillHandler
 
 object Bard : IWeapon {
 

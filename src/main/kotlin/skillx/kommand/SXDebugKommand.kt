@@ -2,7 +2,7 @@ package skillx.kommand
 
 import io.github.monun.kommand.PluginKommand
 import skillx.SkillX
-import skillx.core.handlers.WeaponHandler
+import skillx.core.WeaponHandler
 import skillx.events.userBoard
 
 object SXDebugKommand {

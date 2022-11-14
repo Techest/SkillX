@@ -1,17 +1,16 @@
 package skillx
 
-import org.bukkit.plugin.java.JavaPlugin
 import io.github.monun.kommand.kommand
+import org.bukkit.plugin.java.JavaPlugin
+import skillx.core.WeaponHandler
+import skillx.events.PlayerJoinListener
+import skillx.events.PreventGetDebugItem
+import skillx.kommand.SXDebugKommand
+import skillx.weapons.TestWeapon
 import skillx.weapons.amil.Bard
+import skillx.weapons.amil.Explosioner
 import skillx.weapons.amil.Kight
 import skillx.weapons.amil.Rapier
-import skillx.weapons.tmvkrpxl0.HomingTurret
-import skillx.events.PreventGetDebugItem
-import skillx.events.PlayerJoinListener
-import skillx.weapons.TestWeapon
-import skillx.core.handlers.WeaponHandler
-import skillx.kommand.SXDebugKommand
-import skillx.weapons.amil.Explosioner
 
 class SkillX : JavaPlugin() {
 
@@ -42,9 +41,6 @@ class SkillX : JavaPlugin() {
             Rapier, // FLINT
             Bard, // GOLDEN_SWORD
             Explosioner, // GUNPOWDER
-
-            // tmvkrpxl0
-            HomingTurret // IRON_INGOT
         )
 
         WeaponHandler.weapons.keys.forEach { name ->

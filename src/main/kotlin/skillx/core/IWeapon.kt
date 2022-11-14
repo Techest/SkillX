@@ -1,4 +1,4 @@
-package skillx.core.interfaces
+package skillx.core
 
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
@@ -14,7 +14,7 @@ interface IWeapon : Listener {
     val name: String
 
     /**
-    * It can nullable but recommended
+    * It can be nullable but recommended
      */
     val description: String?
 

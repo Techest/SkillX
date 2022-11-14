@@ -1,10 +1,9 @@
-package skillx.core.handlers
+package skillx.core
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
 import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
-import skillx.core.interfaces.IWeapon
 import org.bukkit.plugin.java.JavaPlugin
 import skillx.SkillX
 import java.util.logging.Level

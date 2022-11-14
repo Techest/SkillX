@@ -45,10 +45,10 @@ tasks {
         }
     }
 
-    /*jar {
+    jar {
         archiveFileName.set(project.name + "-dev.jar")
         destinationDirectory.set(file(".server/plugins"))
-    }*/
+    }
 
     processResources {
         filesMatching("*.yml") {
@@ -61,7 +61,8 @@ tasks {
         useJUnitPlatform()
     }
 
-    reobfJar {
-        outputJar.set(file(".server/plugins/${project.name}-${project.version}-reobf.jar"))
-    }
+//    reobfJar {
+//        outputJar.set(file(".server/plugins/${project.name}-${project.version}-reobf.jar"))
+//    }
+
 }

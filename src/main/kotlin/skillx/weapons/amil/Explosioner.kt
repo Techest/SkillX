@@ -5,8 +5,8 @@ import org.bukkit.Particle
 import org.bukkit.entity.LivingEntity
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.potion.PotionEffectType
-import skillx.core.interfaces.IWeapon
-import skillx.utils.SkillHandler
+import skillx.core.IWeapon
+import skillx.core.SkillHandler
 
 object Explosioner: IWeapon {
     override val name = "Explosioner"
