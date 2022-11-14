@@ -1,23 +1,23 @@
-package skillx.kommand.debug
+package skillx.kommand
 
 import io.github.monun.kommand.PluginKommand
 import skillx.SkillX
+import skillx.core.handlers.WeaponHandler
 import skillx.events.userBoard
-import skillx.inventory.skDebugInventory
 
 object SXDebugKommand {
 
     private lateinit var plugin: SkillX
 
     internal fun register(plugin: SkillX, kommand: PluginKommand) {
-        this.plugin = plugin
-
+        SXDebugKommand.plugin = plugin
+        SkillX.instance.logger.info(":: skdebug registered.")
         kommand.register("skdebug") {
 
             then("select") {
                 executes {
                     player.sendMessage("Open Debug Inventory")
-                    player.openInventory(skDebugInventory)
+                    player.openInventory(WeaponHandler.weaponsInv)
                 }
             }
 

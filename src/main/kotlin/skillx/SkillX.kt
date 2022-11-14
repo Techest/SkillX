@@ -1,6 +1,5 @@
 package skillx
 
-import io.github.monun.kommand.PluginKommand
 import org.bukkit.plugin.java.JavaPlugin
 import io.github.monun.kommand.kommand
 import skillx.weapons.amil.Bard
@@ -11,7 +10,7 @@ import skillx.events.PreventGetDebugItem
 import skillx.events.PlayerJoinListener
 import skillx.weapons.TestWeapon
 import skillx.core.handlers.WeaponHandler
-import skillx.kommand.debug.SXDebugKommand
+import skillx.kommand.SXDebugKommand
 import skillx.weapons.amil.Explosioner
 
 class SkillX : JavaPlugin() {

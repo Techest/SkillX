@@ -1,5 +1,9 @@
 package skillx.core.handlers
 
+import net.kyori.adventure.text.Component
+import org.bukkit.Bukkit
+import org.bukkit.inventory.Inventory
+import org.bukkit.inventory.ItemStack
 import skillx.core.interfaces.IWeapon
 import org.bukkit.plugin.java.JavaPlugin
 import skillx.SkillX
@@ -9,6 +13,8 @@ object WeaponHandler {
 
     val weapons: HashMap<String, IWeapon> = HashMap()
 
+    val weaponsInv: Inventory = Bukkit.createInventory(null, 6 * 9, Component.text("Weapons Inventory"))
+
     /**
      * @param mainClass JavaPlugin
      * @sample code `WeaponHandler.initWeapons(this)` on extended JavaPlugin
@@ -16,6 +22,9 @@ object WeaponHandler {
     fun initWeapons(mainClass: JavaPlugin) {
         weapons.values.forEach { weapon ->
             mainClass.server.pluginManager.registerEvents(weapon, mainClass)
+        }
+        weapons.values.forEach { weapon ->
+            weaponsInv.addItem(ItemStack(weapon.item, 1))
         }
     }
 
