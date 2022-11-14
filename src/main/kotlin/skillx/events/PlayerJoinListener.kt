@@ -16,7 +16,7 @@ val objective = userBoard.registerNewObjective("kill", Criteria.TOTAL_KILL_COUNT
 
 var killStat = 0
 
-object UserBoardListener : Listener {
+object PlayerJoinListener : Listener {
 
     init {
         objective.displaySlot = DisplaySlot.SIDEBAR

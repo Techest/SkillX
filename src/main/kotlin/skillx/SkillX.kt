@@ -8,13 +8,14 @@ import skillx.weapons.amil.Bard
 import skillx.weapons.amil.Kight
 import skillx.weapons.amil.Rapier
 import skillx.weapons.tmvkrpxl0.HomingTurret
-import skillx.events.SelectionClickListener
-import skillx.events.UserBoardListener
+import skillx.events.PreventGetDebugItem
+import skillx.events.PlayerJoinListener
 import skillx.weapons.TestWeapon
 import skillx.core.handlers.WeaponHandler
 import skillx.weapons.amil.Explosioner
 
 class SkillX : JavaPlugin() {
+
     companion object {
         lateinit var instance: SkillX
     }
@@ -23,44 +24,27 @@ class SkillX : JavaPlugin() {
         instance = this
         logger.info("SkillX Enable!")
 
+        server.pluginManager.registerEvents(PlayerJoinListener, this)
+        server.pluginManager.registerEvents(PreventGetDebugItem, this)
+
         ////////////////////////////////////////////////
         // ^----------[ Register Weapons ]----------^ //
-
-        // For Test, Default Weapon
-        WeaponHandler.register(TestWeapon)
-
-        /**
-         * @author PleahMaCaka
-         */
         WeaponHandler.register(
-            // STUFF // STUFF
-        )
+            // Default Weapon
+            TestWeapon,
 
-        /**
-         * @author DwarfAmil
-         */
-        WeaponHandler.register(
+            // PleahMaCaka
+            // Noting stuff
+
+            // DwarfAmil
             Kight, // IRON_SWORD
             Rapier, // FLINT
             Bard, // GOLDEN_SWORD
-            Explosioner // GUNPOWDER
-        )
+            Explosioner, // GUNPOWDER
 
-        /**
-         * @author tmvkrpxl0
-         */
-        WeaponHandler.register(
+            // tmvkrpxl0
             HomingTurret // IRON_INGOT
         )
-
-        // UserList
-        server.pluginManager.registerEvents(UserBoardListener, this)
-        this.getCommand("userlist")?.setExecutor(UserBoardDebug)
-
-        // debug item selection
-        server.pluginManager.registerEvents(SelectionClickListener, this)
-        this.getCommand("select")?.setExecutor(SelectCommand)
-        this.getCommand("select")?.tabCompleter = SelectTabAutoComplete
 
         WeaponHandler.weapons.keys.forEach { name ->
             logger.info("$name is register.")

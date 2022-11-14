@@ -6,7 +6,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryClickEvent
 import skillx.commands.debug.select_inv
 
-object SelectionClickListener : Listener {
+object PreventGetDebugItem : Listener {
 
     @EventHandler
     fun onClicked(event: InventoryClickEvent) {
@@ -23,4 +23,5 @@ object SelectionClickListener : Listener {
         player.closeInventory()
 
     }
+
 }
