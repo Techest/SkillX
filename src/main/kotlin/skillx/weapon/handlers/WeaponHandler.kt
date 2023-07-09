@@ -1,4 +1,5 @@
-package skillx.core
+package skillx.weapon.handlers
+
 
 import net.kyori.adventure.text.Component
 import org.bukkit.Bukkit
@@ -6,6 +7,7 @@ import org.bukkit.inventory.Inventory
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import skillx.SkillX
+import skillx.weapon.interfaces.IWeapon
 import java.util.logging.Level
 
 object WeaponHandler {

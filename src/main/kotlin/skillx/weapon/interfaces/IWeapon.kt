@@ -1,4 +1,4 @@
-package skillx.core
+package skillx.weapon.interfaces
 
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
@@ -8,20 +8,12 @@ import org.bukkit.event.player.PlayerInteractEvent
 
 interface IWeapon : Listener {
 
-    /**
-     *  Duplicate names are not allowed
-     */
     val name: String
 
-    /**
-    * It can be nullable but recommended
-     */
     val description: String?
 
-    /**
-     * TODO bind to spacific item
-     */
     val item: Material
+
 
     @EventHandler
     fun action(event: PlayerInteractEvent) {

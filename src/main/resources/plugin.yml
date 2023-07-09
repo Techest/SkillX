@@ -1,18 +1,11 @@
 name: SkillX
 version: '${version}'
+description: SkillX plugin for paper
+website: https://github.com/techest/SkillX
+authors:
+  - PleahMaCaka
 main: skillx.SkillX
-api-version: 1.19
+api-version: '1.20'
 libraries:
-    - org.jetbrains.kotlin:kotlin-stdlib:1.7.20
-    - org.jetbrains.kotlin:kotlin-reflect:1.7.20
-    - io.github.monun:kommand-core:2.14.0
-commands:
-    select:
-        description: open select inventory
-        usage: /select
-        permission: skillx.debug.select
-
-    userlist:
-        description: userlist
-        usage: /userlist
-        permission: skillx.debug.userlist
+  - org.jetbrains.kotlin:kotlin-stdlib:1.9.0
+  - org.jetbrains.kotlin:kotlin-reflect:1.9.0
