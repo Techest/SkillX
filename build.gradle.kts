@@ -3,7 +3,7 @@ val javaVersion = 17
 
 val paperVersion = "1.20.1"
 
-group = "io.github.pleahmacaka"
+group = "skillx"
 version = "0.1.0"
 
 plugins {

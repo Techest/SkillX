@@ -1,10 +1,10 @@
-name: example
+name: SkillX
 version: '${version}'
-description: Example plugin for Paper
-website: https://github.com/PleahMaCaka/paper-template
+description: SkillX plugin for paper
+website: https://github.com/techest/SkillX
 authors:
   - PleahMaCaka
-main: io.github.pleahmacaka.example.Example
+main: skillx.SkillX
 api-version: '1.20'
 libraries:
   - org.jetbrains.kotlin:kotlin-stdlib:1.9.0
